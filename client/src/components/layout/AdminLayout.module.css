@@ -1,24 +1,80 @@
-.main-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #212529;
-    padding: 0 2rem;
-  }
-  
-  .main-header h1 {
-    color: white;
-  }
-  .logo{
-    height:100%
-  }
-  .logout-button{
-    margin-right: 4rem;
-    padding: 0.4rem 0.75rem;
+/* Basic reset and box-sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  }
+body {
+  font-family: Arial, sans-serif;
+  background-color: rgb(219, 219, 219) !important;
+}
+
+/* Admin layout wrapper */
+.admin-layout {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar (navigation) */
+.admin-sidebar {
+  width: 20%;
+  background-color: #343a40;
+  color: #fff;
+  padding: 20px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100%;
+}
+
+.admin-sidebar h2 {
+  margin-bottom: 20px;
+}
+
+.admin-sidebar ul {
+  list-style: none;
+}
+
+.admin-sidebar ul li {
+  margin-bottom: 15px;
+}
+
+.admin-sidebar ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.admin-sidebar ul li a:hover {
+  color:#6482ad ;
+}
+
+.admin-sidebar button{
+  margin:auto;
+}
+.admin-sidebar button:hover{
+  border:2px solid white;
+}
+
+/* Main content area */
+.admin-content {
+  position: absolute;
+  left:20%;
+  top:0;
+  width:80%;
+  min-height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #e0e0e0; /* Light grey background */
+  margin:0; /* Margins for rounded edges */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional shadow */
+}
+
+.admin-content h1 {
+  margin-bottom: 20px;
+}
+.logout-button {
+  margin-right: 4rem;
+  padding: 0.4rem 0.75rem;
+}

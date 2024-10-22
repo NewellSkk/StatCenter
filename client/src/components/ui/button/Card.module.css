@@ -1,0 +1,50 @@
+/* Basic styling for the card */
+.card {
+    background-color: white;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow */
+    transition: box-shadow 0.3s ease;         /* Smooth shadow on hover */
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+  }
+  
+  /* Responsive width classes */
+  .card.full {
+    width: 100%;  /* Full width of the parent container */
+  }
+  
+  .card.half {
+    width: 50%;  /* 50% of the parent container */
+  }
+  
+  .card.third {
+    width: 33.33%;  /* 1/3 of the parent container */
+  }
+  
+  .card.quarter {
+    width: 25%;  /* 1/4 of the parent container */
+  }
+  
+  /* Media queries for responsiveness */
+
+  @media (max-width: 768px) {
+    /* On smaller screens, make all cards full width */
+    .card.full, 
+    .card.half, 
+    .card.third {
+      width: 100%;
+    }
+    .card.quarter{
+        width: 50%;
+    };
+  }
+  @media (max-width:480px){
+    .card.quarter{
+        width:100%;
+    }
+  }
+  

@@ -7,14 +7,26 @@ const AdminLayout = (props) => {
   const AuthCtx = useContext(AuthContext);
   return (
     <>
-      <header className={styles["main-header"]}>
-        {/* <span><img className={styles.logo} src={logo}/></span> */}
-        <h1>A typical page header</h1>
+      <div className={styles["admin-layout"]}>
+      {/* Sidebar navigation */}
+      <nav className={styles["admin-sidebar"]}>
+        <h2>Admin</h2>
+        <ul>
+          <li><a href="#dashboard">Dashboard</a></li>
+          <li><a href="#users">Users</a></li>
+          <li><a href="#settings">Settings</a></li>
+        </ul>
         <Button className={styles["logout-button"]} onClick={AuthCtx.onLogout}>
           SignOut
         </Button>
-      </header>
-      {props.children}
+      </nav>
+
+      {/* Main content area */}
+      
+      <div className={styles["admin-content"]}>
+        {props.children}
+      </div>
+    </div>
     </>
   );
 };

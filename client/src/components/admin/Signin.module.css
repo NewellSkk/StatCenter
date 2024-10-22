@@ -1,11 +1,23 @@
 body {
-	background: url("../../assets/images/hockey-bg.jpg") no-repeat center center fixed;
-	background-size: cover;
 	font-size: 16px;
 	font-family: 'Lato', sans-serif;
 	font-weight: 300;
 	margin: 0;
 	color: #666;
+}
+.bg{
+  background-image: url("../../assets/images/hockey-bg.jpg");
+  background-size:cover ;
+  background-position: center;
+  background-repeat: no-repeat;
+  position:absolute;
+  top:0;
+  left:0;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+
+  
 }
 /* Center the form on the page */
 .signin-container {
@@ -13,6 +25,9 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height:fit-content;
+    max-width: 450px;
+    margin:auto;
     border-radius: 8px;
     background-color: #f5f5f5;
   }

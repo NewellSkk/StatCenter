@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import styles from "./Signin.module.css";
 import AuthContext from "../../context/AuthContext";
-import Button from "../ui/button/Button";
+import Button from "../ui/Button";
 
 let Signin = () => {
   const AuthCtx = useContext(AuthContext);

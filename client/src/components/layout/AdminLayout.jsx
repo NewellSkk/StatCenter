@@ -1,32 +1,64 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import { NavLink } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
-import Button from "../ui/button/Button";
-import logo from "../../assets/images/league-logo.png";
+import Button from "../ui/Button";
+import Modal from "../ui/Modal";
+import PasswordChanger from "../ui/PasswordChanger";
+
 import styles from "./AdminLayout.module.css";
 const AdminLayout = (props) => {
   const AuthCtx = useContext(AuthContext);
+  const [modalOpen, setModalOpen] = useState(false);
+  const handleModalOpen = () => setModalOpen(true);
+
+  const handleModalClose = () => setModalOpen(false);
   return (
     <>
+      {modalOpen && (
+        <Modal
+          onClose={handleModalClose}
+          header={<h2>Edit User Details</h2>}
+          content={<PasswordChanger/>}
+          actions={
+            <>
+              <button onClick={handleModalClose}>Close</button>
+              <button onClick={() => alert("Confirmed!")}>Confirm</button>
+            </>
+          }
+        />
+      )}
       <div className={styles["admin-layout"]}>
-      {/* Sidebar navigation */}
-      <nav className={styles["admin-sidebar"]}>
-        <h2>Admin</h2>
-        <ul>
-          <li><a href="#dashboard">Dashboard</a></li>
-          <li><a href="#users">Users</a></li>
-          <li><a href="#settings">Settings</a></li>
-        </ul>
-        <Button className={styles["logout-button"]} onClick={AuthCtx.onLogout}>
-          SignOut
-        </Button>
-      </nav>
+        {/* Sidebar navigation */}
+        <nav className={styles["admin-sidebar"]}>
+          <h3>
+            USER:
+            <Button className={styles["sidebar-button"]} onClick={handleModalOpen}>
+              {localStorage.getItem("username")}
+            </Button>
+          </h3>
+          <ul>
+            <li>
+              <NavLink
+                to={"/admin"}
+                className={({ isActive }) => (isActive ? styles.active : "")}
+              >
+                Dash
+              </NavLink>
+            </li>
+            <li>
+              <a href="#settings">Settings</a>
+            </li>
+          </ul>
+          <Button
+            className={styles["sidebar-button"]}
+            onClick={AuthCtx.onLogout}
+          >
+            SignOut
+          </Button>
+        </nav>
 
-      {/* Main content area */}
-      
-      <div className={styles["admin-content"]}>
-        {props.children}
+        <div className={styles["admin-content"]}>{props.children}</div>
       </div>
-    </div>
     </>
   );
 };

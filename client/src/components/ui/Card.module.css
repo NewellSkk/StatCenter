@@ -1,6 +1,7 @@
 /* Basic styling for the card */
 .card {
     background-color: white;
+    box-sizing: border-box;
     padding: 20px;
     margin: 10px;
     border-radius: 8px;
@@ -9,7 +10,11 @@
   }
   
   .card:hover {
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+  }
+
+  .card h2{
+    color: rgb(214, 214, 214);
   }
   
   /* Responsive width classes */
@@ -18,15 +23,15 @@
   }
   
   .card.half {
-    width: 50%;  /* 50% of the parent container */
+    width: calc(50% - 20px);  /* 50% of the parent container */
   }
   
   .card.third {
-    width: 33.33%;  /* 1/3 of the parent container */
+    width: calc(33.33% - 20px);  /* 1/3 of the parent container */
   }
   
   .card.quarter {
-    width: 25%;  /* 1/4 of the parent container */
+    width: calc(25% - 20px);  /* 1/4 of the parent container */
   }
   
   /* Media queries for responsiveness */
@@ -39,7 +44,7 @@
       width: 100%;
     }
     .card.quarter{
-        width: 50%;
+        width: calc(50% - 20px);
     };
   }
   @media (max-width:480px){

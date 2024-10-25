@@ -23,13 +23,13 @@ export const AuthContextProvider = (props) => {
 
   const loginHandler = async (email, password) => {
     try {
-      console.log(email,password)
       const response = await axios.post("/api/auth/login", {
         email: email,
         password: password,
       });
       if(response.data.success){
         localStorage.setItem("isLoggedIn", "1");
+        localStorage.setItem("username",response.data.username)
         setIsLoggedIn(true);
         nav("/admin");
       }else{
@@ -43,6 +43,7 @@ export const AuthContextProvider = (props) => {
   };
   const logoutHandler = () => {
     localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("username");
     setIsLoggedIn(false);
     nav("/admin/signin");
   };

@@ -28,12 +28,14 @@ body {
   height: 100%;
 }
 
-.admin-sidebar h2 {
-  margin-bottom: 20px;
+.admin-sidebar h3 {
+  color: #ffffff;
+  margin-bottom: 5px;
 }
 
 .admin-sidebar ul {
   list-style: none;
+  border-top: #747373 1px solid;
 }
 
 .admin-sidebar ul li {
@@ -41,12 +43,14 @@ body {
 }
 
 .admin-sidebar ul li a {
-  color: #fff;
+  color: #747373;
   text-decoration: none;
   font-weight: bold;
 }
 
-.admin-sidebar ul li a:hover {
+.admin-sidebar ul li a:hover,
+.admin-sidebar ul li a:active,
+.admin-sidebar ul li a.active {
   color:#6482ad ;
 }
 
@@ -54,7 +58,7 @@ body {
   margin:auto;
 }
 .admin-sidebar button:hover{
-  border:2px solid white;
+  border:1px solid white;
 }
 
 /* Main content area */
@@ -74,7 +78,8 @@ body {
 .admin-content h1 {
   margin-bottom: 20px;
 }
-.logout-button {
+.sidebar-button {
   margin-right: 4rem;
   padding: 0.4rem 0.75rem;
+  background-color: #343a40;
 }

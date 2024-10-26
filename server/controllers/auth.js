@@ -20,3 +20,4 @@ exports.login = async (req, res) => {
       .json({ success: false, message: "Server error", error: error.message });
   }
 };
+exports.editPassword= 

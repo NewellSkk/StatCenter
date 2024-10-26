@@ -4,7 +4,7 @@ import AuthContext from "../../context/AuthContext";
 import Button from "../ui/Button";
 import Modal from "../ui/Modal";
 import PasswordChanger from "../ui/PasswordChanger";
-
+import axios from "../../util/axios";
 import styles from "./AdminLayout.module.css";
 const AdminLayout = (props) => {
   const AuthCtx = useContext(AuthContext);
@@ -12,17 +12,30 @@ const AdminLayout = (props) => {
   const handleModalOpen = () => setModalOpen(true);
 
   const handleModalClose = () => setModalOpen(false);
+
+  const passwordChangeHandler=async(oldPass,newPass)=>{
+    try {
+      const response=await axios.post('/api/auth/editPassword',{oldPass:oldPass,newPass:newPass})
+      if(response.data.success){
+        window.alert("SUCCESSFUL CHANGE")
+        handleModalClose();
+      }else{
+        window.alert("UNSUCCESSFUL")
+      }
+    } catch (error) {
+      console.log("ERROR:",error)
+    }
+  }
   return (
     <>
       {modalOpen && (
         <Modal
           onClose={handleModalClose}
           header={<h2>Edit User Details</h2>}
-          content={<PasswordChanger/>}
+          content={<PasswordChanger onSubmit={()=>passwordChangeHandler}/>}
           actions={
             <>
               <button onClick={handleModalClose}>Close</button>
-              <button onClick={() => alert("Confirmed!")}>Confirm</button>
             </>
           }
         />

@@ -15,12 +15,14 @@ const AdminLayout = (props) => {
 
   const passwordChangeHandler=async(oldPass,newPass)=>{
     try {
-      const response=await axios.post('/api/auth/editPassword',{oldPass:oldPass,newPass:newPass})
+      const id=AuthCtx.userID;
+      console.log(localStorage.getItem("userID"));     
+      const response=await axios.post('/api/auth/editPassword',{userID:id,oldPass:oldPass,newPass:newPass})
       if(response.data.success){
-        window.alert("SUCCESSFUL CHANGE")
-        handleModalClose();
+        window.alert(response.data.message);
+        setTimeout(()=>handleModalClose(),3000)
       }else{
-        window.alert("UNSUCCESSFUL")
+        window.alert(response.data.message);
       }
     } catch (error) {
       console.log("ERROR:",error)
@@ -32,7 +34,7 @@ const AdminLayout = (props) => {
         <Modal
           onClose={handleModalClose}
           header={<h2>Edit User Details</h2>}
-          content={<PasswordChanger onSubmit={()=>passwordChangeHandler}/>}
+          content={<PasswordChanger onSubmit={passwordChangeHandler}/>}
           actions={
             <>
               <button onClick={handleModalClose}>Close</button>

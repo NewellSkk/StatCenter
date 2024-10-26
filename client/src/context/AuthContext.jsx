@@ -4,6 +4,7 @@ import axios from "../util/axios";
 
 const AuthContext = React.createContext({
   isLoggedIn: false,
+  userID:null,
   loading: true,
   onLogin: (email, password) => {},
   onLogout: () => {},
@@ -12,11 +13,14 @@ const AuthContext = React.createContext({
 export const AuthContextProvider = (props) => {
   const nav = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const[userID,setUserID]=useState(null);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     let logInfo = localStorage.getItem("isLoggedIn");
     if (logInfo === "1") {
       setIsLoggedIn(true);
+      setUserID(localStorage.getItem("userID"));
+      
     }
     setLoading(false);
   }, []);
@@ -27,19 +31,19 @@ export const AuthContextProvider = (props) => {
         email: email,
         password: password,
       });
-      if(response.data.success){
+      if (response.data.success) {
         localStorage.setItem("isLoggedIn", "1");
-        localStorage.setItem("username",response.data.username)
+        localStorage.setItem("username", response.data.username);
+        localStorage.setItem("userID", response.data.userID);
         setIsLoggedIn(true);
         nav("/admin");
-      }else{
-        alert(response.data.message)
+      } else {
+        alert(response.data.message);
       }
     } catch (error) {
       console.error("Error during login:", error);
       alert("An error occurred while trying to log in. Please try again.");
     }
-  
   };
   const logoutHandler = () => {
     localStorage.removeItem("isLoggedIn");
@@ -51,6 +55,7 @@ export const AuthContextProvider = (props) => {
     <AuthContext.Provider
       value={{
         isLoggedIn: isLoggedIn,
+        userID:userID,
         loading: loading,
         onLogin: loginHandler,
         onLogout: logoutHandler,

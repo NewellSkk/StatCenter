@@ -14,7 +14,8 @@
   }
 
   .card h2{
-    color: rgb(214, 214, 214);
+    color: rgb(150, 150, 150);
+    border-bottom: dashed 1px rgb(150, 150, 150);
   }
   
   /* Responsive width classes */

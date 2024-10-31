@@ -22,6 +22,30 @@
     border-radius: 4px;
 }
 
+.iconed {
+    display: flex;
+    align-items: center; /* Vertically center the icon and input */
+    /* gap: 8px; Space between the icon and the input field */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 4px; /* Padding around icon and input */
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .iconed i {
+    color: #6e6e6e; 
+  }
+  
+  .iconed input {
+    border: none; /* Remove default border */
+    outline: none; /* Remove default outline on focus */
+    font-size: 1rem;
+    box-sizing: border-box;
+    flex-grow: 1;
+    min-width: 0;
+
+  }
 .actions {
     display: flex;
     justify-content: flex-end;

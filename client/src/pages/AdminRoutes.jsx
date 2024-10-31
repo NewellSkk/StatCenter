@@ -3,7 +3,7 @@ import { Routes, Route, Outlet } from "react-router-dom";
 import Signin from "../components/admin/Signin";
 import ProtectedRoute from "../util/ProtectedRoute";
 import AdminLayout from "../components/layout/AdminLayout";
-import Dashboard from "../components/admin/Dashboard";
+import Dashboard from "../components/admin/dashboard/Dashboard";
 
 const AdminRoutes = () => {
   return (

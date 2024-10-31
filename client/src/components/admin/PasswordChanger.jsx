@@ -1,5 +1,5 @@
 import React, { useState, useReducer } from "react";
-import styles from "./PasswordChanger.module.css";
+import styles from "./AdminForms.module.css";
 
 const passwordReducer = (state, action) => {
   switch (action.type) {

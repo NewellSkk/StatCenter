@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import Button from "../ui/Button";
 import Modal from "../ui/Modal";
-import PasswordChanger from "../ui/PasswordChanger";
+import PasswordChanger from "../admin/PasswordChanger";
 import axios from "../../util/axios";
 import styles from "./AdminLayout.module.css";
 const AdminLayout = (props) => {

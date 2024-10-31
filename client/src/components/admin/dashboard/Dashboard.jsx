@@ -1,11 +1,11 @@
-import Card from "../ui/Card";
-
+import Card from "../../ui/Card";
+import NewUserForm from "./NewUserForm";
 import styles from "./Dashboard.module.css";
 
 const Dashboard = () => {
   return (
     <div className={styles.dashboard}>
-         <Card width={"quarter"} title="Sample">quarter</Card>
+         <Card width={"quarter"} title="Add User"><NewUserForm/></Card>
       <Card width={"quarter"}>quarter</Card>
       <Card width={"half"}>half</Card>
       <Card width={"quarter"}>quarter</Card>

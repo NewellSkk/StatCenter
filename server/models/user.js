@@ -12,14 +12,19 @@ module.exports = class User {
   static model = mongoose.model("user", this.schema);
 
   static createUser = async (email, name, rank, password) => {
-    hashedPassword = await bcrypt.hash(password, 5);
-    const user = new User.model({
-      email,
-      name,
-      rank,
-      password: hashedPassword,
-    });
-    return await user.save();
+    const hashedPassword = await bcrypt.hash(password, 5);
+    const emailExists = await User.findByEmail(email);
+    if (emailExists) {
+      return null;
+    } else {
+      const user = new User.model({
+        email,
+        name,
+        rank,
+        password: hashedPassword,
+      });
+      return await user.save();
+    }
   };
 
   static findByEmail = async (email) => {
@@ -34,17 +39,17 @@ module.exports = class User {
     try {
       const user = await User.model.findById(userID);
       if (!user) {
-        return {success:false,message:"UserNotFound"};
+        return { success: false, message: "UserNotFound" };
       }
-      const a=await User.comparePasswords(oldPassword,user.password)
-      if(!a){
-        return{success:false,message:"Wrong Password!"}
+      const a = await User.comparePasswords(oldPassword, user.password);
+      if (!a) {
+        return { success: false, message: "Wrong Password!" };
       }
       // Hash the new password
       const hashedPassword = await bcrypt.hash(newPassword, 5);
       user.password = hashedPassword;
       const updatedUser = user.save();
-      if (updatedUser) return {success:true,message:"Successful"};
+      if (updatedUser) return { success: true, message: "Successful" };
     } catch (error) {
       console.error("Error updating password:", error);
       throw error;

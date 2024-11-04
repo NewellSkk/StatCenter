@@ -16,7 +16,6 @@ const AdminLayout = (props) => {
   const passwordChangeHandler=async(oldPass,newPass)=>{
     try {
       const id=AuthCtx.userID;
-      console.log(localStorage.getItem("userID"));     
       const response=await axios.post('/api/auth/editPassword',{userID:id,oldPass:oldPass,newPass:newPass})
       if(response.data.success){
         window.alert(response.data.message);

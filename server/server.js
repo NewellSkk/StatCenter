@@ -3,7 +3,7 @@ require('dotenv').config()
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const authRoutes = require("./routes/auth");
+const apiRoutes = require("./routes/api")
 require('dotenv').config()
 const app = express();
 
@@ -18,7 +18,7 @@ mongoose
   .catch((error) => console.log("Error connecting to MongoDB: ", error));
 
 app.use(cors({ origin: "http://localhost:5173" }));
-app.use("/api/auth", authRoutes);
+app.use("/api", apiRoutes);
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {

@@ -1,7 +1,7 @@
 const express=require("express");
 const authRoutes = require("./auth");
-const regRoutes = require('./register');
+const userRoutes = require('./user');
 const router = express.Router();
 router.use('/auth',authRoutes);
-router.use('/register',regRoutes);
+router.use('/user',userRoutes);
 module.exports=router;

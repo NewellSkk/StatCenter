@@ -35,6 +35,7 @@ export const AuthContextProvider = (props) => {
         localStorage.setItem("isLoggedIn", "1");
         localStorage.setItem("username", response.data.username);
         localStorage.setItem("userID", response.data.userID);
+        localStorage.setItem("userRank",response.data.userRank)
         setIsLoggedIn(true);
         nav("/admin");
       } else {

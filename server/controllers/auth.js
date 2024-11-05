@@ -13,7 +13,7 @@ exports.login = async (req, res) => {
         .status(200)
         .json({ success: false, message: "Invalid password" });
     }
-    res.json({ success: true, message: "Successful Login",username:user.name,userID:user._id });
+    res.json({ success: true, message: "Successful Login",username:user.name,userID:user._id,userRank:user.rank });
   } catch (error) {
     res
       .status(500)

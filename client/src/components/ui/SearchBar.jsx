@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import axios from "../../util/axios";
-
 import styles from "./SearchBar.module.css";
 
-const SearchBar = ({url,displayProp}) => {
+const SearchBar = ({ fetchResult, renderResult }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [results, setResults] = useState([]);
   const [typingTimeout, setTypingTimeout] = useState(null);
@@ -15,27 +13,25 @@ const SearchBar = ({url,displayProp}) => {
     if (typingTimeout) clearTimeout(typingTimeout);
     //DEBOUNCING THE QUERY CHECK
     setTypingTimeout(
-        setTimeout(async () => {
-            if (query) {
-                try {
-                  const response = await axios.get(`${url}?q=${query}`);
-                  setResults(response.data);
-                } catch (error) {
-                  console.error("Error fetching search results:", error);
-                }
-              } else {
-                setResults([]); 
-              }
-        },2000)
-    )
-
-  
+      setTimeout(async () => {
+        if (query) {
+          try {
+            const data = await fetchResult(query);
+            setResults(data);
+          } catch (error) {
+            console.error("Error fetching search results:", error);
+          }
+        } else {
+          setResults([]);
+        }
+      }, 1000)
+    );
   };
 
   return (
     <div className={styles["search-container"]}>
       <div className={styles.iconed}>
-        <i className="bx bx-search-alt bx-md"/>
+        <i className="bx bx-search-alt bx-md" />
         <input
           type="text"
           placeholder="Search..."
@@ -46,9 +42,9 @@ const SearchBar = ({url,displayProp}) => {
       </div>
 
       <div className={styles["results-container"]}>
-        {results.map((doc) => (
-          <div key={doc._id} className={styles["result-item"]}>
-            {doc[displayProp]}
+        {results.map((item, index) => (
+          <div key={index} className="result-item">
+            {renderResult(item)}
           </div>
         ))}
       </div>

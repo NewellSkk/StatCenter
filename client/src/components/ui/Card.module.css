@@ -7,6 +7,7 @@
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Slight shadow */
     transition: box-shadow 0.3s ease;         /* Smooth shadow on hover */
+    max-height: fit-content;
   }
   
   .card:hover {
@@ -15,14 +16,16 @@
 
   .card h2{
     color: rgb(150, 150, 150);
-    border-bottom: dashed 1px rgb(150, 150, 150);
+    /* border-bottom: dashed 1px rgb(150, 150, 150); */
   }
   
   /* Responsive width classes */
   .card.full {
     width: 100%;  /* Full width of the parent container */
   }
-  
+  .card.three-fourths {
+    width: calc(75% - 20px);  /* 3/4 of the parent container */
+}
   .card.half {
     width: calc(50% - 20px);  /* 50% of the parent container */
   }
@@ -39,7 +42,8 @@
 
   @media (max-width: 768px) {
     /* On smaller screens, make all cards full width */
-    .card.full, 
+    .card.full,
+    .card.three-fourths, 
     .card.half, 
     .card.third {
       width: 100%;

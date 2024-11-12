@@ -1,0 +1,54 @@
+.playerReg{
+    overflow-y: auto; 
+    max-height: 355px;
+}
+.playerReg table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.playerReg th,
+td {
+  padding: 8px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+/* Header styling */
+.playerReg th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+/* Button styling */
+.playerReg button {
+  padding: 5px 10px;
+  cursor: pointer;
+  border: none;
+  color: white;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+/* Approve button */
+.playerReg button.approve {
+  background-color: #28a745;
+}
+
+.playerReg button.approve:hover {
+  background-color: #218838;
+}
+
+/* Deny button */
+.playerReg button.deny {
+  background-color: #dc3545;
+}
+
+.playerReg button.deny:hover {
+  background-color: #c82333;
+}
+
+/* Add spacing between buttons */
+.playerReg button + button {
+  margin-left: 5px;
+}

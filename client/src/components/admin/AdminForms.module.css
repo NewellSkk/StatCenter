@@ -10,7 +10,6 @@
 }
 
 .field label {
-    margin-bottom: 0.5rem;
     font-weight: bold;
     text-align: left;
 }
@@ -26,9 +25,9 @@
     display: flex;
     align-items: center; /* Vertically center the icon and input */
     /* gap: 8px; Space between the icon and the input field */
-    border: 1px solid #ccc;
+    border: .5px solid #ccc;
     border-radius: 4px;
-    padding: 4px; /* Padding around icon and input */
+    padding: none; /* Padding around icon and input */
     width: 100%;
     box-sizing: border-box;
   }

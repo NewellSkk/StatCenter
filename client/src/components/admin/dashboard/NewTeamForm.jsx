@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "../AdminForms.module.css";
 import Button from "../../ui/Button";
 
-const NewUserForm = ({ onSubmit }) => {
+const NewTeamForm = ({ onSubmit }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
@@ -22,7 +22,7 @@ const NewUserForm = ({ onSubmit }) => {
       <div className={styles.field}>
         <label htmlFor="name">NAME</label>
         <span className={styles.iconed} >
-          <i className="bx bx-group bx-sm"/>
+          <i className="bx bx-detail bx-sm"/>
       
         <input
           type="text"
@@ -32,6 +32,21 @@ const NewUserForm = ({ onSubmit }) => {
           placeholder="Enter name"
           required
         />  </span>
+      </div>
+      <div className={styles.field}>
+        <label htmlFor="email">MANAGER</label>
+        <span className={styles.iconed}>
+            <i className="bx bx-user-circle bx-sm"/>
+        <input
+          type="email"
+          id="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Enter email"
+          required
+        />
+        </span>
+       
       </div>
       <div className={styles.field}>
         <label htmlFor="email">EMAIL</label>
@@ -48,9 +63,23 @@ const NewUserForm = ({ onSubmit }) => {
         </span>
        
       </div>
+      <div className={styles.field}>
+        <label htmlFor="email">BADGE</label>
+        <span className={styles.iconed}>
+            <i className="bx bx-shield-quarter bx-sm"/>
+            <input
+          type="file"
+          id="badge"
+          accept="image/png"
+          onChange={null}
+          required
+        />
+        </span>
+       
+      </div>
       <Button type="submit">Add User</Button>
     </form>
   );
 };
 
-export default NewUserForm;
+export default NewTeamForm;

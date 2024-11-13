@@ -4,13 +4,15 @@ import Signin from "../components/admin/Signin";
 import ProtectedRoute from "../util/ProtectedRoute";
 import AdminLayout from "../components/layout/AdminLayout";
 import Dashboard from "../components/admin/dashboard/Dashboard";
+import Season from "../components/admin/season/Season";
 
 const AdminRoutes = () => {
   return (
     <Routes>
       <Route path="signin" element={<Signin />} />
       <Route path="/" element={<ProtectedRoute><AdminLayout><Outlet/></AdminLayout></ProtectedRoute>}>
-        <Route path="/" element={<Dashboard/>} />
+        <Route path="/dash" element={<Dashboard/>} />
+        <Route path="/season" element={<Season/>}/>
       </Route>
     </Routes>
   );

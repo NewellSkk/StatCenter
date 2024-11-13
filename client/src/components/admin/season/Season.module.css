@@ -1,6 +1,6 @@
-.dashboard{
+.season{
     display: flex;
     flex-wrap:wrap;
     width: 100%;
-    background-color: aliceblue;
+    background-color: rgb(20, 145, 255);
 }

@@ -44,16 +44,20 @@ const Dashboard = () => {
         </Card>
       )}
       <Card width={"three-fourths"} title={"TEAMS"}>
-        <TeamsDisplay/>
+        <TeamsDisplay />
       </Card>
       <Card width={"quarter"} title={"ADD TEAM"}>
         <NewTeamForm />
       </Card>
-
-      <Card width={"half"} title={"Schedule Match"}>One</Card>
-      <Card width={"half"} title={"Player Registration"}><PlayerReg/></Card>
-      <Card width={"half"}>Half</Card>
+      <Card width={"quarter"} title={"Find Player"}>
+        <SearchBar fetchResult={fetchUsers} renderResult={renderUserResult} />
+      </Card>
+  
+      <Card width={"three-fourths"} title={"Player Registration"}>
+        <PlayerReg />
+      </Card>
+      
     </div>
   );
 };
-export default Dashboard
+export default Dashboard;

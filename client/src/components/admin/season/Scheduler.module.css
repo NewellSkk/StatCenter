@@ -1,0 +1,17 @@
+.match-list {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  
+  .match {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    min-width: fit-content;
+    flex: 1 1 calc(25% - 15px);
+    box-sizing: border-box;
+  }
+  

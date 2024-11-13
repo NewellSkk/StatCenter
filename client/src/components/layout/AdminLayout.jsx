@@ -40,7 +40,12 @@ const AdminLayout = (props) => {
       {modalOpen && (
         <Modal
           onClose={handleModalClose}
-          header={<h2>User:{localStorage.getItem("username")}({localStorage.getItem("userRank")})</h2>}
+          header={
+            <h2>
+              User:{localStorage.getItem("username")}(
+              {localStorage.getItem("userRank")})
+            </h2>
+          }
           content={<PasswordChanger onSubmit={passwordChangeHandler} />}
           actions={
             <>
@@ -65,35 +70,41 @@ const AdminLayout = (props) => {
               className={styles["sidebar-button"]}
               onClick={handleModalOpen}
             >
-                       <i className="bx bx-user bx-sm" />
-                       <span className={styles["nav-text"]}>:{localStorage.getItem("username")}</span>
+              <i className="bx bx-user bx-sm" />
+              <span className={styles["nav-text"]}>
+                :{localStorage.getItem("username")}
+              </span>
             </button>
           </h3>
           <ul>
             <li>
               <NavLink
-                to={"/admin"}
-                className={({ isActive }) => (isActive ? styles.active : "")}
+                to={"/admin/dash"}
+                className={({ isActive }) => (isActive ? styles.active : "INACTIVE")}
               >
                 <i className="bx bx-layout bx-sm" />
                 <span className={styles["nav-text"]}>Dashboard</span>
               </NavLink>
             </li>
             <li>
-              <a href="#settings">
-                {" "}
+              <NavLink
+                to={"/admin/season"}
+                className={({ isActive }) => (isActive ? styles.active : "INACTIVE")}
+              >
                 <i className="bx bx-calendar bx-sm" />{" "}
                 <span className={styles["nav-text"]}>Season</span>
-              </a>
+              </NavLink>
             </li>
           </ul>
           <span className={styles.logout}>
-          <button
-            className={styles["sidebar-button"]}
-            onClick={AuthCtx.onLogout}
-          ><i className="bx bx-log-out bx-sm"/>
-            <span className={styles["nav-text"]}>SignOut</span>
-          </button></span>
+            <button
+              className={styles["sidebar-button"]}
+              onClick={AuthCtx.onLogout}
+            >
+              <i className="bx bx-log-out bx-sm" />
+              <span className={styles["nav-text"]}>SignOut</span>
+            </button>
+          </span>
         </nav>
 
         <div className={styles["admin-content"]}>{props.children}</div>

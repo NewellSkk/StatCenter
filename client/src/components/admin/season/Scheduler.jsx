@@ -5,8 +5,8 @@ import styles from "./Scheduler.module.css";
 
 const Scheduler = ({ teams }) => {
   const [scheduledMatches, setScheduledMatches] = useState([]);
-
   const [matchDates, setMatchDates] = useState({});
+  const [seasonStartDate, setSeasonStartDate] = useState(null);
 
   const generateMatches = () => {
     const allMatches = [];
@@ -33,8 +33,11 @@ const Scheduler = ({ teams }) => {
   };
 
   return (
-    <div>
-      <button onClick={generateMatches}>Generate Season Matches</button>
+    <form className={styles.schedulerForm}>
+      <button type="button" onClick={generateMatches}>
+        Generate New Season
+      </button>
+    
       <div className={styles["match-list"]}>
         {scheduledMatches.map((match, index) => (
           <div key={index} className={styles.match}>
@@ -47,7 +50,20 @@ const Scheduler = ({ teams }) => {
           </div>
         ))}
       </div>
-    </div>
+      {(scheduledMatches.length>0)&&
+      <div>
+        <label htmlFor="season-start-date">Season Start Date:</label><br/>
+        <DatePicker
+          selected={seasonStartDate}
+          onChange={(date) => setSeasonStartDate(date)}
+          placeholderText="Select start date"
+          id="season-start-date"
+        />
+              <button type="button" onClick={generateMatches}>
+        Save
+      </button>
+      </div>}
+    </form>
   );
 };
 

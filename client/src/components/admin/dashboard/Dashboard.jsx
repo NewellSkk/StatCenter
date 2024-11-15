@@ -31,6 +31,18 @@ const Dashboard = () => {
       {user.email}.{user.name}.{<Button>View</Button>}
     </span>
   );
+  const newTeamHandler=async({name,manager,email,badge})=>{
+    try {
+      const response = await axios.post("/api/team/register", { name,manager,email,badge });
+      if (response.data.success) {
+        window.alert(response.data.message);
+      } else {
+        window.alert(response.data.message);
+      }
+    } catch (error) {
+      console.log("ERROR:" + error);
+    }
+  }
   return (
     <div className={styles.dashboard}>
       {rank == "Owner" && (
@@ -47,7 +59,7 @@ const Dashboard = () => {
         <TeamsDisplay />
       </Card>
       <Card width={"quarter"} title={"ADD TEAM"}>
-        <NewTeamForm />
+        <NewTeamForm onSubmit={newTeamHandler} />
       </Card>
       <Card width={"quarter"} title={"Find Player"}>
         <SearchBar fetchResult={fetchUsers} renderResult={renderUserResult} />

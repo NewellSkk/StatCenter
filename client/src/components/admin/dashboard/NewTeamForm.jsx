@@ -4,14 +4,18 @@ import Button from "../../ui/Button";
 
 const NewTeamForm = ({ onSubmit }) => {
   const [name, setName] = useState("");
+  const [manager,setManager] = useState("");
   const [email, setEmail] = useState("");
+  const [badge,setBadge] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (name && email) {
-      onSubmit({ name, email });
+    if (name && email && manager && badge) {
+      onSubmit({ name,manager,email,badge });
       setName("");
+      setManager("");
       setEmail("");
+      setBadge(null);
     } else {
       alert("Please fill out all fields");
     }
@@ -34,15 +38,15 @@ const NewTeamForm = ({ onSubmit }) => {
         />  </span>
       </div>
       <div className={styles.field}>
-        <label htmlFor="email">MANAGER</label>
+        <label htmlFor="manager">MANAGER</label>
         <span className={styles.iconed}>
             <i className="bx bx-user-circle bx-sm"/>
         <input
-          type="email"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="Enter email"
+          type="text"
+          id="manager"
+          value={manager}
+          onChange={(e) => setManager(e.target.value)}
+          placeholder="Enter manager"
           required
         />
         </span>
@@ -64,14 +68,14 @@ const NewTeamForm = ({ onSubmit }) => {
        
       </div>
       <div className={styles.field}>
-        <label htmlFor="email">BADGE</label>
+        <label htmlFor="badge">BADGE</label>
         <span className={styles.iconed}>
             <i className="bx bx-shield-quarter bx-sm"/>
             <input
           type="file"
           id="badge"
           accept="image/png"
-          onChange={null}
+          onChange={(e)=>setBadge(e.target.value)}
           required
         />
         </span>

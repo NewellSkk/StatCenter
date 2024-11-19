@@ -31,9 +31,13 @@ const Dashboard = () => {
       {user.email}.{user.name}.{<Button>View</Button>}
     </span>
   );
-  const newTeamHandler=async({name,manager,email,badge})=>{
+  const newTeamHandler=async(data)=>{
     try {
-      const response = await axios.post("/api/team/register", { name,manager,email,badge });
+      const formdata=new FormData();
+      for(let key in data){
+        formdata.append(key,data[key])
+      }
+      const response = await axios.post("/api/team/register",formdata,{headers:{"Content-Type":"multipart/form-data"}});
       if (response.data.success) {
         window.alert(response.data.message);
       } else {
